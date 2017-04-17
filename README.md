@@ -26,15 +26,15 @@ what to change and make sure the Arabic script will format nicely."
 over time, I need to use an external program. It would be wonderful if you could show
 more detail on a stock, including its price over time."
 
-## 004-Gundega says:
+## 003-Gundega says:
 "I use a lot of widgets on my Android device, and I would love to have a widget that
 displays my stock quotes on my home screen."
 
-## 005-Jamal says:
+## 004-Jamal says:
 "I found a bug in your app. Right now when I search for a stock quote that doesn't
 exist, the app crashes."
 
-## 006-Xaio-lu says:
+## 005-Xaio-lu says:
 "When I opened this app for the first time without a network connection, it was a
 confusing blank screen. I would love a message that tells me why the screen is blank
 or whether my stock quotes are out of date."

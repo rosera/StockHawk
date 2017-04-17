@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         if (networkUp()) {
             onRefresh();
         } else {
-            String message = getString(R.string.error_no_network);
+            String message = getString(R.string.toast_no_connectivity);
             Toast.makeText(this, message, Toast.LENGTH_LONG).show();
         }
 

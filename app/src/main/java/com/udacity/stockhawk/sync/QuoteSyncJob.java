@@ -75,7 +75,7 @@ public final class QuoteSyncJob {
 
                 Stock stock = quotes.get(symbol);
 
-                // TODO: Capture null stock reference to stop error on returning non existent code
+                // Issue 004-jamal: Ensure non existent code is not saved
                 if (stock.getName() != null) {
                     StockQuote quote = stock.getQuote();
 
@@ -107,9 +107,11 @@ public final class QuoteSyncJob {
 
                     quoteCVs.add(quoteCV);
                 }
+                // Issue 004-jamal: add a message to indicate the stock does not exist
                 else {
-                    // TODO: Add a toast to indicate stock entered does not exist
-                    Toast.makeText(context, "Stock " + symbol + " does not exist.", Toast.LENGTH_SHORT).show();
+                    // Add a toast message to indicate stock entered does not exist
+                    Toast.makeText(context, "Stock " + symbol + " does not exist.",
+                            Toast.LENGTH_SHORT).show();
                 }
 
             }

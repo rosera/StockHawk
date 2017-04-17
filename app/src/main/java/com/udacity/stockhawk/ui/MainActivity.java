@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         swipeRefreshLayout.setOnRefreshListener(this);
         swipeRefreshLayout.setRefreshing(true);
 
-        // 006-Xaio-lu: Check if the network is available before refresh
+        // 005-Xaio-lu: Check if the network is available before refresh
         if (networkUp()) {
             onRefresh();
         } else {

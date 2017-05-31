@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.udacity.stockhawk.data.Contract;
 import com.udacity.stockhawk.data.PrefUtils;
+import com.udacity.stockhawk.mock.MockUtils;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -75,7 +76,7 @@ public final class QuoteSyncJob {
 
                 Stock stock = quotes.get(symbol);
 
-                // TODO: Capture null stock reference to stop error on returning non existent code
+                // Issue 004-jamal: Ensure non existent code is not saved
                 if (stock.getName() != null) {
                     StockQuote quote = stock.getQuote();
 
@@ -83,9 +84,21 @@ public final class QuoteSyncJob {
                     float change = quote.getChange().floatValue();
                     float percentChange = quote.getChangeInPercent().floatValue();
 
+                    /*
+                     * UDACITY email 19th May 2017
+                     */
+                    
                     // WARNING! Don't request historical data for a stock that doesn't exist!
                     // The request will hang forever X_x
-                    List<HistoricalQuote> history = stock.getHistory(from, to, Interval.WEEKLY);
+//                    List<HistoricalQuote> history = stock.getHistory(from, to, Interval.WEEKLY);
+
+                    // Note for reviewer:
+                    // Due to the problem with the Yahoo API we have commented out the line above
+                    // and included this one to fetch the history from MockUtils
+                    // This should be enough to develop and review while the API is down
+                    List<HistoricalQuote> history = MockUtils.getHistory();
+
+
 
                     StringBuilder historyBuilder = new StringBuilder();
 
@@ -107,9 +120,11 @@ public final class QuoteSyncJob {
 
                     quoteCVs.add(quoteCV);
                 }
+                // Issue 004fe2917357502a4de8d7137f66c36fc5bda3d870a-jamal: add a message to indicate the stock does not exist
                 else {
-                    // TODO: Add a toast to indicate stock entered does not exist
-                    Toast.makeText(context, "Stock " + symbol + " does not exist.", Toast.LENGTH_SHORT).show();
+                    // Add a toast message to indicate stock entered does not exist
+                    Toast.makeText(context, "Stock " + symbol + " does not exist.",
+                            Toast.LENGTH_SHORT).show();
                 }
 
             }

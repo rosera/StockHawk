@@ -60,9 +60,17 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         stockRecyclerView.setAdapter(adapter);
         stockRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+
         swipeRefreshLayout.setOnRefreshListener(this);
         swipeRefreshLayout.setRefreshing(true);
-        onRefresh();
+
+        // 005-Xaio-lu: Check if the network is available before refresh
+        if (networkUp()) {
+            onRefresh();
+        } else {
+            String message = getString(R.string.toast_no_connectivity);
+            Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+        }
 
         QuoteSyncJob.initialize(this);
         getSupportLoaderManager().initLoader(STOCK_LOADER, null, this);

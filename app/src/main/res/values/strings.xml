@@ -21,6 +21,7 @@
     <string name="action_change_units">@string/pref_display_mode_key</string>
 
 
+    <string name="btn_add_stock">Add new stock item</string>
     <string name="dialog_title">Add Stock</string>
     <string name="dialog_hint">Symbol (e.g. GOOG)</string>
     <string name="dialog_cancel">Cancel</string>
